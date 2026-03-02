@@ -11,6 +11,7 @@
 
     <title inertia>Averti</title>
 
+    
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" href="{{ asset('assets/img/logo.svg') }}" type="image/png">
