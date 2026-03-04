@@ -1,5 +1,5 @@
 import { Head, usePage } from '@inertiajs/react';
-import TopText from '@/components/landing/TopText.jsx';
+import TopText from '@/components/landing/layout/TopText.jsx';
 import Header from '@/components/dashboard/Header.jsx';
 import DashboardBlockLayout from '@/ui/DashboardBlockLayout.jsx';
 import SolChart from '@/components/dashboard/SolChart.jsx';

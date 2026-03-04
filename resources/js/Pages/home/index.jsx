@@ -1,16 +1,16 @@
-import BehaviorSection from '@/components/landing/BehaviorSection';
-import FAQSection from '@/components/landing/FAQSection';
-import FeaturesSection from '@/components/landing/FeaturesSection';
-import Footer from '@/components/landing/Footer';
-import Header from '@/components/landing/Header';
-import HowItWorksSection from '@/components/landing/HowItWorksSection';
-import MainSection from '@/components/landing/MainSection';
-import PatternsSection from '@/components/landing/PatternsSection';
-import RealUseSection from '@/components/landing/RealUseSection';
-import RoadmapSection from '@/components/landing/RoadmapSection';
-import TopText from '@/components/landing/TopText';
-import TRCASection from '@/components/landing/TRCASection';
-import UtilitySection from '@/components/landing/UtilitySection';
+import BehaviorSection from '@/components/landing/sections/BehaviorSection';
+import FAQSection from '@/components/landing/sections/FAQSection';
+import FeaturesSection from '@/components/landing/sections/FeaturesSection';
+import HowItWorksSection from '@/components/landing/sections/HowItWorksSection';
+import MainSection from '@/components/landing/sections/MainSection';
+import PatternsSection from '@/components/landing/sections/PatternsSection';
+import RealUseSection from '@/components/landing/sections/RealUseSection';
+import RoadmapSection from '@/components/landing/sections/RoadmapSection';
+import TRCASection from '@/components/landing/sections/TRCASection';
+import UtilitySection from '@/components/landing/sections/UtilitySection';
+import Footer from '@/components/landing/layout/Footer';
+import Header from '@/components/landing/layout/Header';
+import TopText from '@/components/landing/layout/TopText';
 import { Head, usePage } from '@inertiajs/react';
 
 export default function Home() {
@@ -19,19 +19,19 @@ export default function Home() {
     return (
         <>
             <Head title="Tracea" />
-            <TopText text={props.settings.text}/>
-            <Header/>
-            <MainSection/>
-            <UtilitySection/>
-            <FeaturesSection/>
-            <HowItWorksSection/>
-            <BehaviorSection/>
-            <PatternsSection/>
-            <TRCASection/>
-            <RealUseSection/>
-            <RoadmapSection/>
-            <FAQSection/>
-           <Footer/>
+            <TopText text={props.settings.text} />
+            <Header />
+            <MainSection />
+            <UtilitySection />
+            <FeaturesSection />
+            <HowItWorksSection />
+            <BehaviorSection />
+            <PatternsSection />
+            <TRCASection />
+            <RealUseSection />
+            <RoadmapSection />
+            <FAQSection />
+            <Footer />
         </>
     );
 }
