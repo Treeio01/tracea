@@ -1,21 +1,12 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: 'SF-Pro';
-    src: url('/assets/font/SF-Pro.ttf') format('truetype');
-    font-weight: 300-900;
-    font-style: normal;
-}
-
 @theme {
     --breakpoint-1873: 1873px;
     --breakpoint-1731: 1731px;
     --breakpoint-1440: 1440px;
     --breakpoint-1204: 1204px;
     --color-primary: #DFBB60;
-    --font-SF: "SF-Pro", sans-serif;
     --font-Inter: "Inter", sans-serif;
-    --font-rethink: "Rethink Sans", sans-serif;
 }
 
 #app {
@@ -39,7 +30,7 @@ body {
     overflow-x: hidden;
     display: flex;
     justify-content: center;
-    background: #000000;
+    background: #F6F6F6;
 }
 
 label {
@@ -66,12 +57,21 @@ label {
     animation: fade-in 0.4s ease-out;
 }
 
-.top-shadow {
+
+.bg-top-text-gradient {
+    background: linear-gradient(
+        90deg, 
+        #3EA0EB 0%, 
+        #60B8FB 22%, 
+        #38A3F5 47%, 
+        #4CB0FC 71%, 
+        #76C4FF 85%, 
+        #269FFC 100%
+    );
+}
+
+.drop-shadow-button {
     box-shadow:
-        inset -2.17px -2.17px 2.17px 0 rgba(0, 0, 0, 0.2),
-        inset 2.17px 2.17px 2.17px 0 rgba(0, 0, 0, 0.2),
-        inset 0 0 10.86px 0 rgba(47, 182, 122, 0.2),
-        inset 0 0 32.58px 0 rgba(96, 219, 164, 0.75),
-        0 0 10.86px 0 rgba(47, 182, 122, 0.25);
-    backdrop-filter: blur(33.17px);
+        0px 4px 5.1px rgba(0, 0, 0, 0.35),
+        inset 0px 2px 2px 0px #abc9f9;
 }
