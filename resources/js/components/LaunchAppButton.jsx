@@ -1,6 +1,6 @@
 import { router } from "@inertiajs/react";
 import { usePrivy, useWallets } from "@privy-io/react-auth";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function LaunchAppButton({ className = "", children, disabled }) {
     const { ready, authenticated, login, user } = usePrivy();
@@ -46,6 +46,12 @@ export default function LaunchAppButton({ className = "", children, disabled }) 
         },
         [authenticated, ready, user, wallets]
     );
+
+    useEffect(() => {
+        if (ready && authenticated && loginInitiatedRef.current) {
+            void syncWallet({ redirect: true });
+        }
+    }, [authenticated, ready, syncWallet]);
 
     const handleLaunch = useCallback(() => {
         if (!ready) return;
