@@ -13,28 +13,22 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const PRIVY_APP_ID = "cmlrwk5zs00gs0cl7rjpln4sw";
+const PRIVY_APP_ID = "cmmaqdl0e021v0cl4uxkeeko5";
 
 const PRIVY_CONFIG = {
     appearance: {
-        accentColor: '#56e6b9',
-        theme: '#222224',
-        showWalletLoginFirst: true,
-        logo: 'https://image2url.com/r2/default/images/1771411558848-80005f0d-3ab5-4865-a641-bce6c3dea212.png',
-        walletChainType: 'solana-only',
-        walletList: [
-            "detected_ethereum_wallets",
-      "detected_solana_wallets",
-      "metamask",
-      "phantom",
-      "coinbase_wallet",
-      "base_account",
-      "rainbow",
-      "solflare",
-      "backpack",
-      "okx_wallet",
-      "wallet_connect"
-        ],
+        "accentColor": "#3ea0eb",
+        "theme": "#FFFFFF",
+        "showWalletLoginFirst": false,
+        "logo": "https://i.imgur.com/KJ32KsP.png",
+        "walletChainType": "solana-only",
+        "walletList": [
+            "detected_solana_wallets",
+            "phantom",
+            "solflare",
+            "backpack",
+            "okx_wallet"
+        ]
     },
     loginMethods: ['wallet'],
     fundingMethodConfig: {
