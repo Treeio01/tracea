@@ -73,7 +73,7 @@ export default function WalletAnalyzerSection({ defaultAddress = "", onStatsLoad
                     <button
                         type="submit"
                         disabled={loading}
-                        className="lg:py-3.5 py-2 lg:px-7 flex justify-center items-center px-4 rounded-full border border-[#0485E7] bg-gradient-to-b from-[#73C2FF] to-[#3EA0EB] shadow-[inset_0_-1px_7.2px_0_rgba(0,0,0,0.09)_inset_0px_2px_2px_0px_#ADCCFF] disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="lg:py-3.5 py-2 lg:px-7 flex justify-center items-center px-4 rounded-full border border-[#0485E7] bg-gradient-to-b from-[#73C2FF] to-[#3EA0EB] shadow-[inset_0_-1px_7.2px_0_rgba(0,0,0,0.09)_inset_0px_2px_2px_0px_#ADCCFF] disabled:opacity-60 disabled:cursor-not-allowed hover:opacity-90 transition-opacity active:scale-[0.98] disabled:hover:opacity-60 disabled:active:scale-100"
                         style={{
                             boxShadow:
                                 "inset 0px -1px 7.2px 0px rgba(0,0,0,0.09), inset 0px 2px 2px 0px #ADCCFF",

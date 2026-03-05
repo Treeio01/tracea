@@ -10,7 +10,7 @@ export default function DashboardFooter({ twitter }) {
                 <a href={twitter || "#"} target="_blank" rel="noopener noreferrer" className={`lg:p-4 p-2 rounded-full bg-[#323232] border border-[#414141] transition-colors ${twitter ? "hover:bg-[#414141]" : "pointer-events-none opacity-70"}`}>
                         <XIcon fill="#E0E0E0" />
                     </a>
-                    <Link href="/" className="bg-[#3EA0EB] flex justify-center items-center lg:px-[32px] px-[22px] lg:py-4 py-3 rounded-full">
+                    <Link href="/" className="bg-[#3EA0EB] flex justify-center items-center lg:px-[32px] px-[22px] lg:py-4 py-3 rounded-full hover:opacity-90 transition-opacity active:scale-[0.98]">
                         <span className="text-[#FAFAFA] leading-[100%] lg:text-[16px] text-[10px]">Return to landing page</span>
                     </Link>
                 </div>

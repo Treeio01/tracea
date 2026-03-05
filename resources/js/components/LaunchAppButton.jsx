@@ -69,7 +69,7 @@ export default function LaunchAppButton({ className = "", children, disabled }) 
     return (
         <button
             type="button"
-            className={className}
+            className={`${className} hover:opacity-90 transition-opacity active:scale-[0.98] transition-transform disabled:pointer-events-none`.trim()}
             onClick={handleLaunch}
             disabled={isDisabled}
         >

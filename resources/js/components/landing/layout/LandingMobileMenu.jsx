@@ -124,7 +124,7 @@ export default function LandingMobileMenu({ isOpen, onClose, twitterUrl }) {
                             key={item.label}
                             href={item.href}
                             onClick={onClose}
-                            className="py-4 flex px-5 w-full items-center gap-3 bg-white border border-[#F3F5F5] rounded-[16px] hover:border-[#E9E9E9] transition-colors"
+                            className="py-4 flex px-5 w-full items-center gap-3 bg-white border border-[#F3F5F5] rounded-[16px] hover:border-[#E9E9E9] hover:opacity-90 transition-all"
                         >
                             <span className="leading-[100%] text-[#494949]">{item.label}</span>
                         </a>

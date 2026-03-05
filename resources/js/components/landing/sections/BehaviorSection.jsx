@@ -48,7 +48,7 @@ export default function BehaviorSection() {
                 <span className="lg:text-xl text-[10px] text-[#232323]">
                     Looking at behavior helps reduce overreaction to short-term price noise and provides a clearer view of participation quality.
                 </span>
-                <button className="bg-white flex w-max border items-baseline gap-2 border-[#C8C8C8] rounded-full lg:py-4 py-3 lg:px-9 px-8">
+                <button className="bg-white flex w-max border items-baseline gap-2 border-[#C8C8C8] rounded-full lg:py-4 py-3 lg:px-9 px-8 hover:opacity-90 transition-opacity active:scale-[0.98]">
                     <span className="lg:text-[16px] text-[10px] text-black">Visit</span>
                     <ArrowUpRightIcon />
                 </button>

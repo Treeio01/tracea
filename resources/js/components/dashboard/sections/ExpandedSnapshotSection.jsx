@@ -10,7 +10,7 @@ export default function ExpandedSnapshotSection({ twitterUrl }) {
                 href={twitterUrl || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`z-50 flex border rounded-full p-2.5 border-[#EFEFEF] bg-linear-to-br from-[#F9FCFF] to-[#F5F8FA] ${twitterUrl ? "hover:opacity-90 transition-opacity" : "pointer-events-none opacity-70"}`}
+                className={`z-50 flex border rounded-full p-2.5 border-[#EFEFEF] bg-linear-to-br from-[#F9FCFF] to-[#F5F8FA] transition-all ${twitterUrl ? "hover:opacity-90 active:scale-[0.98]" : "pointer-events-none opacity-70"}`}
             >
                 <div className="flex p-0.5 bg-linear-to-b from-[#ABCBFF] to-[#0586E8] rounded-full">
                     <div className="flex rounded-full px-9 py-4.5 bg-linear-to-b from-[#73C2FF] to-[#3EA0EB] drop-shadow-button">

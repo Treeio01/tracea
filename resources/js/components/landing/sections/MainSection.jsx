@@ -66,7 +66,7 @@ export default function MainSection() {
     }, { scope: sectionRef });
 
     return (
-        <section ref={sectionRef} id="hero" className="flex overflow-hidden relative w-full items-center justify-center max-w-[1770px] lg:p-[66px] p-[31px] lg:pb-[512px] pb-[160px] lg:pt-0 pt-[97px] 1395:rounded-[26px] rounded-[0px] bg-white 1395:border border-none border-[#D9D9D9]">
+        <section ref={sectionRef} id="hero" className="flex overflow-hidden relative w-full items-center justify-center max-w-[1770px] lg:p-[66px] p-[31px] lg:pb-[512px] pb-[160px] lg:pt-[66px] pt-[97px] 1395:rounded-[26px] rounded-[0px] bg-white 1395:border border-none border-[#D9D9D9]">
             <div className="flex z-50 flex-col max-w-[1069px] w-full items-center gap-[42px]">
                 <div className="flex flex-col items-center gap-[38px] w-full">
                     <h1 className="hero-title bg-clip-text font-medium text-center bg-linear-to-br from-[#000A1D] to-[#001A4A] lg:text-[70px] text-[34px]">

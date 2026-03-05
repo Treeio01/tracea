@@ -12,7 +12,7 @@ export default function Sidebar() {
                 <div className="flex w-full min-h-[1px] bg-[#DFDFDF]" />
                 <Link
                     href="#overview"
-                    className="py-4.5 flex px-6 w-full items-center gap-1.5 bg-white border border-[#F3F5F5] rounded-[16px] hover:border-[#E9E9E9] transition-colors"
+                    className="py-4.5 flex px-6 w-full items-center gap-1.5 bg-white border border-[#F3F5F5] rounded-[16px] hover:border-[#E9E9E9] hover:opacity-90 transition-all"
                 >
                     <OverviewIcon className="shrink-0" />
                     <span className="leading-[100%] text-[#494949]">Overview</span>
@@ -32,7 +32,7 @@ export default function Sidebar() {
             </div>
             <Link
                 href="/"
-                className="py-4.5 flex px-6 w-full items-center gap-1.5 bg-white border border-[#F3F5F5] rounded-[16px] hover:border-[#E9E9E9] transition-colors mt-auto"
+                className="py-4.5 flex px-6 w-full items-center gap-1.5 bg-white border border-[#F3F5F5] rounded-[16px] hover:border-[#E9E9E9] hover:opacity-90 transition-all mt-auto"
             >
                 <LandingIcon className="shrink-0" />
                 <span className="leading-[100%] text-[#494949]">Return to landing page</span>
