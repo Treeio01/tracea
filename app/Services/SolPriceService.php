@@ -9,17 +9,18 @@ class SolPriceService
 {
     private const BASE_URL = 'https://api.binance.com/api/v3';
     private const SYMBOL = 'SOLUSDT';
+    private const USDC_SYMBOL = 'USDCUSDT';
     private const HTTP_TIMEOUT = 3;
 
-    public function getKlines(string $interval = '1m', int $limit = 60): array
+    public function getKlines(string $interval = '1m', int $limit = 60, string $symbol = self::SYMBOL): array
     {
-        $cacheKey = "sol:klines:{$interval}:{$limit}";
+        $cacheKey = "market:klines:{$symbol}:{$interval}:{$limit}";
         $ttl = $interval === '1m' ? 5 : 15;
 
-        return Cache::remember($cacheKey, $ttl, function () use ($interval, $limit) {
+        return Cache::remember($cacheKey, $ttl, function () use ($interval, $limit, $symbol) {
             $response = Http::timeout(self::HTTP_TIMEOUT)
                 ->get(self::BASE_URL . '/klines', [
-                    'symbol' => self::SYMBOL,
+                    'symbol' => $symbol,
                     'interval' => $interval,
                     'limit' => $limit,
                 ]);
@@ -28,12 +29,12 @@ class SolPriceService
 
             return array_map(fn(array $k) => [
                 't' => (int) $k[0],
-                'p' => round((float) $k[4], 2),
+                'p' => round((float) $k[4], 4),
             ], $response->json());
         });
     }
 
-    public function getChart(string $timeframe = '24H'): array
+    public function getChart(string $timeframe = '24H', string $symbol = self::SYMBOL): array
     {
         [$interval, $limit] = match ($timeframe) {
             'Time' => ['1m', 30],
@@ -41,12 +42,22 @@ class SolPriceService
             default => ['5m', 288],
         };
 
-        $klines = $this->getKlines($interval, $limit);
+        $klines = $this->getKlines($interval, $limit, $symbol);
         $price = !empty($klines) ? end($klines)['p'] : 0;
 
         return [
             'klines' => $klines,
             'price' => $price,
         ];
+    }
+
+    public function getSolChart(string $timeframe = '24H'): array
+    {
+        return $this->getChart($timeframe, self::SYMBOL);
+    }
+
+    public function getUsdcChart(string $timeframe = '24H'): array
+    {
+        return $this->getChart($timeframe, self::USDC_SYMBOL);
     }
 }

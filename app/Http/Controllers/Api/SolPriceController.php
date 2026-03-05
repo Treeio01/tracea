@@ -21,6 +21,17 @@ class SolPriceController extends Controller
             $tf = '24H';
         }
 
-        return response()->json($this->solPrice->getChart($tf));
+        return response()->json($this->solPrice->getSolChart($tf));
+    }
+
+    public function usdcChart(Request $request): JsonResponse
+    {
+        $tf = $request->query('tf', '24H');
+
+        if (!in_array($tf, ['Time', '1H', '24H'], true)) {
+            $tf = '24H';
+        }
+
+        return response()->json($this->solPrice->getUsdcChart($tf));
     }
 }

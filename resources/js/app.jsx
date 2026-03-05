@@ -2,12 +2,16 @@ import './bootstrap';
 import '../css/app.css';
 
 import { createRoot } from 'react-dom/client';
-import { createInertiaApp, router } from '@inertiajs/react';
+import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import React, { useEffect } from 'react';
-import { initScrollAnimationsSystem, refreshScrollAnimations } from './utils/scrollAnimations';
+import React from 'react';
 import { PrivyProvider } from '@privy-io/react-auth';
 import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const PRIVY_APP_ID = "cmlrwk5zs00gs0cl7rjpln4sw";
 
@@ -46,28 +50,6 @@ const PRIVY_CONFIG = {
     },
 };
 
-const ScrollAnimationProvider = ({ children }) => {
-    useEffect(() => {
-        initScrollAnimationsSystem();
-
-        const timer = setTimeout(refreshScrollAnimations, 150);
-        const handleFinish = () => setTimeout(refreshScrollAnimations, 100);
-        router.on('finish', handleFinish);
-
-        return () => {
-            clearTimeout(timer);
-            router.off('finish', handleFinish);
-        };
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(refreshScrollAnimations, 200);
-        return () => clearTimeout(timer);
-    });
-
-    return children;
-};
-
 createInertiaApp({
     title: (title) => `${title}`,
     resolve: (name) =>
@@ -78,9 +60,7 @@ createInertiaApp({
     setup({ el, App, props }) {
         createRoot(el).render(
             <PrivyProvider appId={PRIVY_APP_ID} config={PRIVY_CONFIG}>
-                <ScrollAnimationProvider>
-                    <App {...props} />
-                </ScrollAnimationProvider>
+                <App {...props} />
             </PrivyProvider>
         );
     },

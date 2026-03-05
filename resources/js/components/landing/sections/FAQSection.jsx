@@ -43,8 +43,15 @@ const FAQS = [
 
 export default function FAQSection() {
     return (
-        <section id="faq" className="flex justify-between w-full max-w-[1420px] mt-[140px] mb-[21px]">
-            <div className="flex flex-col gap-[60px]">
+        <section id="faq" className="flex lg:flex-row flex-col gap-3 justify-between w-full max-w-[1420px] lg:mt-[140px] mt-[30px] mb-[21px]">
+              <SectionHeader
+                    badge="FAQ"
+                    title="Frequently Asked Questions"
+                    subtitle="How TRACEA works, what it shows, and what it doesn't."
+                    align="center"
+                    className="lg:hidden flex"
+                />
+            <div className="lg:flex hidden flex-col gap-[60px] ">
                 <SectionHeader
                     badge="FAQ"
                     title="Frequently Asked Questions"
@@ -53,27 +60,27 @@ export default function FAQSection() {
                 />
                 <TraceaTextLogo />
             </div>
-            <div className="flex w-full max-w-[648px] flex-col gap-4">
+            <div className="flex w-full max-w-[648px] flex-col lg:gap-4 gap-2.5">
                 {FAQS.map((faq) => (
                     <div
                         key={faq.question}
-                        className={`flex relative px-12 py-10 gap-6 flex-col bg-[#FDFDFD] rounded-[36px] transition-all ${
+                        className={`flex relative lg:px-12 px-5 lg:py-10 py-5 lg:gap-6 gap-3 flex-col bg-[#FDFDFD] lg:rounded-[36px] rounded-[20px] transition-all ${
                             faq.active
                                 ? "border border-[#3EA0EB] shadow-[0px_15px_14.5px_0px_rgba(0,0,0,0.07)]"
                                 : "border border-white"
                         }`}
                     >
                         <div
-                            className="flex absolute right-[36px] top-[36px] rounded-full z-50 w-[33px] h-[33px] border-4 border-white"
+                            className="flex absolute right-[20px] top-[15px] rounded-full z-50 lg:w-[33px] lg:h-[33px] w-[20px] h-[20px] border-4 border-white"
                             style={{
                                 background: faq.accent,
                                 boxShadow: "0px 5px 10.1px 0px rgba(0,0,0,0.15)",
                             }}
                         />
-                        <span className="text-[22px] font-semibold text-[#393939] leading-[100%]">
+                        <span className="lg:text-[22px] text-[12px] font-semibold text-[#393939] leading-[100%]">
                             {faq.question}
                         </span>
-                        <p className="leading-[140%] text-[#676767]">
+                        <p className="leading-[140%] lg:text-[16px] text-[8px] text-[#676767]">
                             {faq.answer}
                         </p>
                     </div>

@@ -17,11 +17,4 @@ class RenderController extends Controller
             'wallet' => auth()->user()?->address,
         ]);
     }
-
-    public function wallet()
-    {
-        return Inertia::render('dashboard/wallet', [
-            'wallet' => auth()->user()?->address,
-        ]);
-    }
 }

@@ -1,67 +1,51 @@
-import { Head, usePage } from '@inertiajs/react';
-import TopText from '@/components/landing/layout/TopText.jsx';
-import Header from '@/components/dashboard/Header.jsx';
-import DashboardBlockLayout from '@/ui/DashboardBlockLayout.jsx';
-import SolChart from '@/components/dashboard/SolChart.jsx';
-import EngineStatusBlock from '@/components/dashboard/EngineStatusBlock.jsx';
-import DepositSourceBlock from '@/components/dashboard/DepositSourceBlock.jsx';
-import MarketChangeBlock from '@/components/dashboard/MarketChangeBlock.jsx';
-import HedgeReadoutBlock from '@/components/dashboard/HedgeReadoutBlock.jsx';
-import HedgeTimelineBlock from '@/components/dashboard/HedgeTimelineBlock.jsx';
-import AnalyticsPromoBlock from '@/components/dashboard/AnalyticsPromoBlock.jsx';
-import useBinancePrice from '@/hooks/useBinancePrice.js';
-import useCurrentTime from '@/hooks/useCurrentTime.js';
-import useCountdown from '@/hooks/useCountdown.js';
+import { useState } from "react";
+import Content from "@/components/dashboard/Content";
+import Sidebar from "@/components/dashboard/layout/Sidebar";
+import DashboardFooter from "@/components/dashboard/layout/DashboardFooter";
+import MobileMenu from "@/components/dashboard/layout/MobileMenu";
+import TopText from "@/components/landing/layout/TopText";
+import { Head, usePage } from "@inertiajs/react";
 
 export default function Dashboard() {
     const { props } = usePage();
-    const solPrice = useBinancePrice();
-    const currentTime = useCurrentTime();
-    const nextCheckCountdown = useCountdown(30);
-    const triggerPrice = solPrice ? +(solPrice * 1.015).toFixed(2) : null;
+    const [menuOpen, setMenuOpen] = useState(false);
+    const address = props.wallet ?? props.auth?.user?.address;
+    const walletAddress = address ? `${address.slice(0, 3)}...${address.slice(-3)}` : "9xQ...kP2";
 
     return (
         <>
             <Head title="Dashboard" />
-            <TopText text={props.settings?.text ?? '$Tracea token launch coming soon. Contract address will appear here.'} />
-
-            <div className="flex w-full gap-[12px] md:gap-[20px] p-[12px] md:p-[20px] flex-col">
-                <Header wallet={props.wallet} />
-
-               
-                <div className="flex w-full gap-[20px] md:flex-row flex-col">
-                    <EngineStatusBlock currentTime={currentTime} />
-                    <DashboardBlockLayout className="w-full gap-[32px] flex-col">
-                        <SolChart livePrice={solPrice} />
-                    </DashboardBlockLayout>
-                </div>
-
-                
-                <div className="flex w-full gap-[20px] md:flex-row flex-col">
-                    <DepositSourceBlock />
-                    <MarketChangeBlock
-                        solPrice={solPrice}
-                        nextCheckCountdown={nextCheckCountdown}
-                        triggerPrice={triggerPrice}
+            <div className="flex flex-col w-full min-h-screen">
+                <TopText text={props.settings?.text} />
+                <div className="flex lg:flex-row flex-col lg:gap-[50px] gap-[12px] h-full w-full">
+                    <header className="lg:hidden w-full bg-white justify-between flex items-center py-3 px-[22px] border-b border-[#EFEFEF]">
+                        <img src="/assets/img/logo-full.svg" className="w-[81px]" alt="" />
+                        <button
+                            onClick={() => setMenuOpen(true)}
+                            className="p-2 -mr-2 rounded-lg hover:bg-[#F5F5F5] active:scale-95 transition-transform"
+                            aria-label="Open menu"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" rx="4" fill="#3EA0EB" />
+                                <rect x="4" y="7" width="16" height="2" rx="1" fill="#F2F2F2" />
+                                <rect x="4" y="11" width="16" height="2" rx="1" fill="#F2F2F2" />
+                                <rect x="4" y="15" width="16" height="2" rx="1" fill="#F2F2F2" />
+                            </svg>
+                        </button>
+                    </header>
+                    <MobileMenu
+                        isOpen={menuOpen}
+                        onClose={() => setMenuOpen(false)}
+                        twitterUrl={props.settings?.twitter}
                     />
-                    <HedgeReadoutBlock
-                        nextCheckCountdown={nextCheckCountdown}
-                        triggerPrice={triggerPrice}
+                    <Sidebar />
+                    <Content
+                        walletAddress={walletAddress}
+                        defaultWalletAddress={address ?? ""}
+                        twitterUrl={props.settings?.twitter}
                     />
-                    <DashboardBlockLayout className="w-full relative flex-col overflow-hidden">
-                        <img
-                            src="/assets/img/dashboard--img-2.svg"
-                            className="flex absolute left-1/2 bottom-0 -translate-x-1/2 w-full h-full object-cover"
-                            alt=""
-                        />
-                    </DashboardBlockLayout>
                 </div>
-
-                
-                <div className="flex w-full gap-[20px] md:flex-row flex-col">
-                    <HedgeTimelineBlock />
-                    <AnalyticsPromoBlock />
-                </div>
+                <DashboardFooter twitter={props.settings?.twitter} />
             </div>
         </>
     );

@@ -1,7 +1,7 @@
 export default function PatternImg(){
     return (
         <>
-        <svg width="714" height="491" viewBox="0 0 714 491" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg  width="714" height="491" viewBox="0 0 714 491" fill="none" xmlns="http://www.w3.org/2000/svg" className="pattern-svg h-full">
 <g clip-path="url(#clip0_0_1134)">
 <rect x="10" y="10" width="694" height="471" rx="32" fill="#1A1A1A"/>
 <g filter="url(#filter0_f_0_1134)">
@@ -16,15 +16,15 @@ export default function PatternImg(){
 <g filter="url(#filter3_f_0_1134)">
 <ellipse cx="323.51" cy="15.8349" rx="32.429" ry="343" transform="rotate(-48.2277 323.51 15.8349)" fill="url(#paint2_radial_0_1134)" fill-opacity="0.53"/>
 </g>
-<g filter="url(#filter4_d_0_1134)">
+<g filter="url(#filter4_d_0_1134)" className="pattern-float pattern-float-center">
 <rect x="233" y="121" width="249" height="249" rx="28.1887" fill="url(#paint3_linear_0_1134)"/>
 <rect x="233.5" y="121.5" width="248" height="248" rx="27.6887" stroke="url(#paint4_linear_0_1134)"/>
 </g>
-<g filter="url(#filter5_d_0_1134)">
+<g filter="url(#filter5_d_0_1134)" className="pattern-float pattern-float-center">
 <rect x="242" y="130" width="231" height="231" rx="26.1509" fill="url(#paint5_linear_0_1134)"/>
 <rect x="242.464" y="130.464" width="230.072" height="230.072" rx="25.6871" stroke="url(#paint6_linear_0_1134)" stroke-width="0.927711"/>
 </g>
-<g filter="url(#filter6_di_0_1134)">
+<g filter="url(#filter6_di_0_1134)" className="pattern-float pattern-float-1">
 <g clip-path="url(#clip1_0_1134)">
 <rect x="448" y="361.562" width="208" height="60" rx="18" transform="rotate(-4.01465 448 361.562)" fill="url(#paint7_linear_0_1134)"/>
 <g filter="url(#filter7_d_0_1134)">
@@ -41,7 +41,7 @@ export default function PatternImg(){
 <g filter="url(#filter9_i_0_1134)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M382.616 192.302C384.977 191.863 387.402 191.902 389.747 192.418C392.092 192.933 394.307 193.915 396.259 195.303C398.211 196.691 399.859 198.458 401.104 200.495C402.35 202.532 403.167 204.798 403.506 207.157C402.507 207.03 401.5 206.967 400.492 206.967H330.449C326.595 207.887 327.06 213.311 331.541 213.383H400.492C405.065 213.388 409.45 215.193 412.684 218.401C415.917 221.609 417.736 225.959 417.741 230.496V281.83C417.736 286.366 415.917 290.716 412.684 293.923C409.45 297.131 405.065 298.936 400.492 298.941H314.249C309.676 298.936 305.291 297.131 302.058 293.923C298.824 290.716 297.005 286.366 297 281.83V230.496C297.001 229.784 297.046 229.077 297.135 228.379V221.941C297.135 216.385 300.109 207.226 310.251 204.628C310.697 204.506 311.15 204.402 311.607 204.315H311.675C312.597 204.144 313.519 203.989 314.431 203.85L382.616 192.302ZM390.991 248.258C389.415 247.611 387.681 247.441 386.008 247.771C384.335 248.101 382.799 248.916 381.593 250.113C380.387 251.309 379.565 252.833 379.232 254.493C378.9 256.152 379.07 257.873 379.723 259.436C380.375 261 381.481 262.336 382.899 263.276C384.318 264.216 385.985 264.718 387.69 264.718C389.978 264.718 392.172 263.817 393.789 262.213C395.406 260.608 396.315 258.432 396.315 256.163C396.315 254.471 395.809 252.816 394.861 251.409C393.914 250.002 392.567 248.906 390.991 248.258Z" fill="url(#paint10_linear_0_1134)"/>
 </g>
-<g filter="url(#filter10_di_0_1134)">
+<g filter="url(#filter10_di_0_1134)" className="pattern-float pattern-float-2">
 <g clip-path="url(#clip2_0_1134)">
 <rect x="91.2817" y="346" width="177.004" height="51.059" rx="15.3177" transform="rotate(11.6171 91.2817 346)" fill="url(#paint11_linear_0_1134)"/>
 <g filter="url(#filter11_d_0_1134)">
@@ -57,7 +57,7 @@ export default function PatternImg(){
 </g>
 <rect x="91.6128" y="346.502" width="176.153" height="50.208" rx="14.8922" transform="rotate(11.6171 91.6128 346.502)" stroke="#272626" stroke-width="0.850983"/>
 </g>
-<g filter="url(#filter13_di_0_1134)">
+<g filter="url(#filter13_di_0_1134)" className="pattern-float pattern-float-3">
 <g clip-path="url(#clip4_0_1134)">
 <rect x="479.202" y="74.8184" width="152.766" height="44.0671" rx="13.2201" transform="rotate(7.97001 479.202 74.8184)" fill="url(#paint14_linear_0_1134)"/>
 <g filter="url(#filter14_d_0_1134)">

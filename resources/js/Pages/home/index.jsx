@@ -20,18 +20,24 @@ export default function Home() {
         <>
             <Head title="Tracea" />
             <TopText text={props.settings.text} />
-            <Header />
+            <Header twitterUrl={props.settings?.twitter} />
+            <div className="h-[122px] 1395:block hidden" aria-hidden />
+            <div className="h-[56px] 1395:hidden" aria-hidden />
             <MainSection />
-            <UtilitySection />
-            <FeaturesSection />
-            <HowItWorksSection />
-            <BehaviorSection />
-            <PatternsSection />
-            <TRCASection />
-            <RealUseSection />
-            <RoadmapSection />
-            <FAQSection />
-            <Footer />
+            <div className="flex flex-col w-full 1395:px-0 px-5 items-center">
+                
+                <UtilitySection />
+                <FeaturesSection />
+                <HowItWorksSection />
+                <BehaviorSection />
+                <PatternsSection />
+                <TRCASection />
+                <RealUseSection />
+                <RoadmapSection />
+                <FAQSection />
+                
+            </div>
+            <Footer twitter={props.settings?.twitter} />
         </>
     );
 }

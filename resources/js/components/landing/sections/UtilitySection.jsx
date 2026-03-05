@@ -1,8 +1,14 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeader from "../ui/SectionHeader";
+import UtilityBlockImg1 from "../blockSvgs/UtilityBlockImg1";
 
 const UTILITY_ITEMS = [
     {
         image: "/assets/img/utility-block-img-1.svg",
+        inlineSvg: UtilityBlockImg1,
         text: <>Adjusts analytical depth based <br /> on access level.</>,
         maxWidth: "456px",
     },
@@ -29,22 +35,48 @@ const UTILITY_ITEMS = [
 ];
 
 export default function UtilitySection() {
+    const sectionRef = useRef(null);
+
+    useGSAP(() => {
+        gsap.from(".utility-card", {
+            y: 60,
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".utility-grid",
+                start: "top 80%",
+                toggleActions: "play none none none",
+            },
+        });
+    }, { scope: sectionRef });
+
     return (
-        <section id="utility" className="flex flex-col items-center gap-[36px] w-full max-w-[1420px] mt-[140px]">
+        <section ref={sectionRef} id="utility" className="flex flex-col items-center gap-[36px] w-full max-w-[1420px] lg:mt-[140px] mt-[30px]">
             <SectionHeader
                 badge="Utility"
                 title="What TRACEA does"
                 subtitle={<>Below you can see the functions that <i>TRACEA</i> provides.</>}
             />
-            <div className="flex gap-[26px] w-full justify-center flex-wrap">
-                {UTILITY_ITEMS.map((item) => (
+            <div className="utility-grid flex lg:gap-[26px] gap-[10px] w-full justify-center flex-wrap">
+                {UTILITY_ITEMS.map((item, idx) => (
                     <div
                         key={item.image}
-                        className="flex w-full p-[30px] bg-[#FDFDFD] flex-col gap-[25px] border border-white rounded-[36px]"
+                        className="utility-card flex w-full lg:p-[30px] p-[20px] bg-[#FDFDFD] flex-col lg:gap-[25px] gap-[16px] border border-white lg:rounded-[36px] rounded-[26px]"
                         style={{ maxWidth: item.maxWidth }}
                     >
-                        <img src={item.image} alt="" />
-                        <span className="text-xl text-[#3F3F3F]">{item.text}</span>
+                        <div className="block-svg-wrap">
+                            {item.inlineSvg ? (
+                                <item.inlineSvg className="block-svg-img w-full h-auto" />
+                            ) : (
+                                <div className="block-svg-float" style={{ animationDelay: `${idx * 0.2}s` }}>
+                                    <img src={item.image} alt="" className="block-svg-img" />
+                                </div>
+                            )}
+                        </div>
+                        <span className="lg:text-xl text-[10px] text-[#3F3F3F]">{item.text}</span>
                     </div>
                 ))}
             </div>

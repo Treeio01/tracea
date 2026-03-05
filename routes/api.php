@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/sol/chart', [SolPriceController::class, 'chart']);
+Route::get('/usdc/chart', [SolPriceController::class, 'usdcChart']);
 
