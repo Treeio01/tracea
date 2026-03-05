@@ -22,7 +22,6 @@ export default function Home() {
             <TopText text={props.settings.text} />
             <Header twitterUrl={props.settings?.twitter} />
             <div className="h-[122px] 1395:block hidden" aria-hidden />
-            <div className="h-[56px] 1395:hidden" aria-hidden />
             <MainSection />
             <div className="flex flex-col w-full 1395:px-0 px-5 items-center">
                 

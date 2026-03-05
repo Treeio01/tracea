@@ -88,7 +88,7 @@ export default function Header({ twitterUrl }) {
             </div>
         </header>
 
-        <header className="1395:hidden z-[150] fixed top-0 left-0 right-0 z-[90] w-full bg-white justify-between flex items-center py-3 px-[22px] border-b border-[#EFEFEF]">
+        <header className="1395:hidden z-[150] z-[90] w-full bg-white justify-between flex items-center py-3 px-[22px] border-b border-[#EFEFEF]">
             <img src="/assets/img/logo-full.svg" className="w-[81px]" alt="" />
             <button
                 onClick={() => setMenuOpen(true)}
