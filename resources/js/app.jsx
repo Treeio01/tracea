@@ -7,11 +7,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import React from 'react';
 import { PrivyProvider } from '@privy-io/react-auth';
 import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import { initScrollAnimationsSystem, runMountAnimations } from './utils/scrollAnimations';
 
 const PRIVY_APP_ID = "cmmaqdl0e021v0cl4uxkeeko5";
 
@@ -57,6 +53,8 @@ createInertiaApp({
                 <App {...props} />
             </PrivyProvider>
         );
+        initScrollAnimationsSystem();
+        setTimeout(() => runMountAnimations(), 50);
     },
     progress: {
         color: '#4B5563',

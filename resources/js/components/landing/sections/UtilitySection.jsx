@@ -1,7 +1,3 @@
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeader from "../ui/SectionHeader";
 import UtilityBlockImg1 from "../blockSvgs/UtilityBlockImg1";
 
@@ -35,32 +31,14 @@ const UTILITY_ITEMS = [
 ];
 
 export default function UtilitySection() {
-    const sectionRef = useRef(null);
-
-    useGSAP(() => {
-        gsap.from(".utility-card", {
-            y: 60,
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ".utility-grid",
-                start: "top 80%",
-                toggleActions: "play none none none",
-            },
-        });
-    }, { scope: sectionRef });
-
     return (
-        <section ref={sectionRef} id="utility" className="flex flex-col items-center gap-[36px] w-full max-w-[1420px] lg:mt-[140px] mt-[30px]">
+        <section id="utility" className="flex flex-col items-center gap-[36px] w-full max-w-[1420px] lg:mt-[140px] mt-[30px]">
             <SectionHeader
                 badge="Utility"
                 title="What TRACEA does"
                 subtitle={<>Below you can see the functions that <i>TRACEA</i> provides.</>}
             />
-            <div className="utility-grid flex lg:gap-[26px] gap-[10px] w-full justify-center flex-wrap">
+            <div className="utility-grid flex lg:gap-[26px] gap-[10px] w-full justify-center flex-wrap" data-scroll-stagger="0.12" data-scroll-animate-type="slide-up-60" data-scroll-stagger-children=".utility-card">
                 {UTILITY_ITEMS.map((item, idx) => (
                     <div
                         key={item.image}

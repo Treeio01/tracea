@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import XIcon from "../icons/XIcon";
 import LaunchAppButton from "../../LaunchAppButton";
 import { NAV_ITEMS } from "../data/navItems";
@@ -9,8 +7,6 @@ import { NAV_ITEMS } from "../data/navItems";
 const CLOSE_DURATION = 380;
 
 export default function LandingMobileMenu({ isOpen, onClose, twitterUrl }) {
-    const overlayRef = useRef(null);
-    const panelRef = useRef(null);
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -21,39 +17,6 @@ export default function LandingMobileMenu({ isOpen, onClose, twitterUrl }) {
             return () => clearTimeout(t);
         }
     }, [isOpen]);
-
-    useGSAP(
-        () => {
-            if (!overlayRef.current || !panelRef.current) return;
-            if (isOpen) {
-                gsap.killTweensOf([overlayRef.current, panelRef.current]);
-                gsap.set(panelRef.current, { y: "100vh" });
-                gsap.to(overlayRef.current, {
-                    opacity: 1,
-                    duration: 0.3,
-                    ease: "power2.out",
-                });
-                gsap.to(panelRef.current, {
-                    y: 0,
-                    duration: 0.45,
-                    ease: "back.out(1.15)",
-                    overwrite: true,
-                });
-            } else {
-                gsap.killTweensOf([overlayRef.current, panelRef.current]);
-                gsap.to(overlayRef.current, {
-                    opacity: 0,
-                    duration: 0.25,
-                });
-                gsap.to(panelRef.current, {
-                    y: "100vh",
-                    duration: 0.35,
-                    ease: "power3.in",
-                });
-            }
-        },
-        { dependencies: [isOpen] }
-    );
 
     useEffect(() => {
         const handleEscape = (e) => {
@@ -74,18 +37,15 @@ export default function LandingMobileMenu({ isOpen, onClose, twitterUrl }) {
     return createPortal(
         <div className="1395:hidden fixed inset-0 z-[9999]" aria-hidden={!isOpen}>
             <div
-                ref={overlayRef}
                 role="button"
                 tabIndex={0}
                 onClick={onClose}
                 onKeyDown={(e) => e.key === "Enter" && onClose()}
-                className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-                style={{ opacity: 1 }}
+                className={`absolute inset-0 bg-black/50 backdrop-blur-sm mobile-menu-overlay ${isOpen ? "opacity-100" : "opacity-0"}`}
                 aria-label="Close menu"
             />
             <div
-                ref={panelRef}
-                className="absolute bottom-0 left-0 right-0 min-h-[280px] max-h-[85vh] bg-[#FDFDFD] rounded-t-[24px] flex flex-col py-6 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] overflow-y-auto"
+                className={`absolute bottom-0 left-0 right-0 min-h-[280px] max-h-[85vh] bg-[#FDFDFD] rounded-t-[24px] flex flex-col py-6 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] overflow-y-auto mobile-menu-panel ${isOpen ? "mobile-menu-open" : "mobile-menu-closed"}`}
                 style={{
                    
                     boxShadow: "0 -4px 6px -1px rgba(0,0,0,0.08), 0 -12px 40px -8px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.04)",

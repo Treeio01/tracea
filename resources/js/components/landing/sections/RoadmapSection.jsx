@@ -1,7 +1,3 @@
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeader from "../ui/SectionHeader";
 import FlagIcon from "../icons/FlagIcon";
 
@@ -75,65 +71,8 @@ const ROADMAP = [
 ];
 
 export default function RoadmapSection() {
-    const sectionRef = useRef(null);
-
-    useGSAP(() => {
-        gsap.from(".roadmap-left-card", {
-            y: 50,
-            opacity: 0,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ".roadmap-left-col",
-                start: "top 80%",
-                toggleActions: "play none none none",
-            },
-        });
-
-        gsap.from(".roadmap-right-item", {
-            y: 40,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ".roadmap-right-col",
-                start: "top 80%",
-                toggleActions: "play none none none",
-            },
-        });
-
-        gsap.utils.toArray(".roadmap-dot").forEach((dot, i) => {
-            gsap.from(dot, {
-                scale: 0,
-                duration: 0.4,
-                ease: "back.out(2)",
-                scrollTrigger: {
-                    trigger: dot,
-                    start: "top 85%",
-                    toggleActions: "play none none none",
-                },
-            });
-        });
-
-        gsap.utils.toArray(".roadmap-line").forEach((line) => {
-            gsap.from(line, {
-                scaleY: 0,
-                transformOrigin: "top center",
-                duration: 0.6,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: line,
-                    start: "top 85%",
-                    toggleActions: "play none none none",
-                },
-            });
-        });
-    }, { scope: sectionRef });
-
     return (
-        <section ref={sectionRef} id="roadmap" className="flex flex-col gap-[36px] items-start w-full max-w-[1420px] lg:mt-[140px] mt-[30px]">
+        <section id="roadmap" className="flex flex-col gap-[36px] items-start w-full max-w-[1420px] lg:mt-[140px] mt-[30px]">
             <SectionHeader
                 badge="Roadmap"
                 title="Roadmap"
@@ -150,7 +89,7 @@ export default function RoadmapSection() {
             />
 
             <div className="flex w-full justify-between flex-col md:flex-row">
-                <div className="roadmap-left-col flex flex-col lg:gap-[26px] gap-[10px] w-full max-w-[697px]">
+                <div className="roadmap-left-col flex flex-col lg:gap-[26px] gap-[10px] w-full max-w-[697px]" data-scroll-stagger="0.12" data-scroll-animate-type="slide-up-50" data-scroll-stagger-children=".roadmap-left-card">
                     {ROADMAP.map((item, idx) => (
                         <div
                             key={item.quarter}
@@ -192,7 +131,7 @@ export default function RoadmapSection() {
                     ))}
                 </div>
 
-                <div className="roadmap-right-col lg:flex hidden flex-col gap-[44px] w-full max-w-[510px] mt-8 md:mt-0">
+                <div className="roadmap-right-col lg:flex hidden flex-col gap-[44px] w-full max-w-[510px] mt-8 md:mt-0" data-scroll-stagger="0.1" data-scroll-animate-type="slide-up-40" data-scroll-stagger-children=".roadmap-right-item">
                     {ROADMAP.map((item, idx) => {
                         const isLast = idx === ROADMAP.length - 1;
                         return (
@@ -204,13 +143,18 @@ export default function RoadmapSection() {
                                                 ? "bg-gradient-to-b from-[#8ACCFF] to-[#3EA0EB]"
                                                 : "bg-gradient-to-b from-[#FEFEFE] to-[#EDEDED]"
                                         }`}
+                                        data-scroll-animate="scale-bounce"
+                                        data-scroll-duration="0.4"
                                     />
                                     <div
-                                        className={`roadmap-line flex absolute h-[calc(100%+44px)] left-1/2 top-[33px] -translate-x-1/2 w-[6px] ${
+                                        className={`roadmap-line flex absolute h-[calc(100%+44px)] left-1/2 top-[33px] -translate-x-1/2 w-[6px] origin-top ${
                                             isLast
                                                 ? "bg-gradient-to-b from-[#D9D9D9] to-[#D9D9D9]/0"
                                                 : "bg-[#D9D9D9]"
                                         }`}
+                                        data-scroll-animate="scale-y"
+                                        data-scroll-duration="0.6"
+                                        style={{ transformOrigin: "top center" }}
                                     />
                                 </div>
                                 <span className="text-[20px] md:text-[26px] text-[#2D2D2D] font-semibold leading-[100%]">

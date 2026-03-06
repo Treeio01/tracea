@@ -1,7 +1,3 @@
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeader from "../ui/SectionHeader";
 
 const TRCA_ITEMS = [
@@ -14,32 +10,14 @@ const TRCA_ITEMS = [
 ];
 
 export default function TRCASection() {
-    const sectionRef = useRef(null);
-
-    useGSAP(() => {
-        gsap.from(".trca-card", {
-            y: 80,
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ".trca-grid",
-                start: "top 80%",
-                toggleActions: "play none none none",
-            },
-        });
-    }, { scope: sectionRef });
-
     return (
-        <section ref={sectionRef} id="trca" className="flex flex-col items-center gap-[36px] w-full max-w-[1422px] lg:mt-[140px] mt-[30px]">
+        <section id="trca" className="flex flex-col items-center gap-[36px] w-full max-w-[1422px] lg:mt-[140px] mt-[30px]">
             <SectionHeader
                 badge="TRCA"
                 title="What TRCA holders unlock"
                 subtitle="From isolated wallets to behavioral patterns."
             />
-            <div className="trca-grid flex gap-[26px] w-full justify-center flex-wrap">
+            <div className="trca-grid flex gap-[26px] w-full justify-center flex-wrap" data-scroll-stagger="0.1" data-scroll-animate-type="trca-card" data-scroll-stagger-children=".trca-card">
                 {TRCA_ITEMS.map((item, idx) => (
                     <div
                         key={item.image}

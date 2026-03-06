@@ -1,7 +1,3 @@
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeader from "../ui/SectionHeader";
 import FeatureCornerIcon from "../icons/FeatureCornerIcon";
 import DashedLine from "../icons/DashedLine";
@@ -34,51 +30,20 @@ const FEATURES = [
 ];
 
 export default function FeaturesSection() {
-    const sectionRef = useRef(null);
-
-    useGSAP(() => {
-        gsap.from(".feature-card", {
-            y: 70,
-            opacity: 0,
-            scale: 0.92,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ".features-grid",
-                start: "top 80%",
-                toggleActions: "play none none none",
-            },
-        });
-
-        gsap.utils.toArray(".feature-corner-icon").forEach((icon) => {
-            gsap.to(icon, {
-                rotation: 8,
-                y: -3,
-                duration: 2,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-            });
-        });
-    }, { scope: sectionRef });
-
     return (
-        <section ref={sectionRef} id="features" className="flex flex-col items-center gap-[36px] w-full max-w-[1420px] lg:mt-[140px] mt-[30px]">
+        <section id="features" className="flex flex-col items-center gap-[36px] w-full max-w-[1420px] lg:mt-[140px] mt-[30px]">
             <SectionHeader
                 badge="Core Features"
                 title="Understanding Behavior, Not Predictions"
                 subtitle={<>TRACEA analyzes real on-chain transactions, groups wallets by observed behavior, and <br /> provides market context — without signals or price forecasting.</>}
             />
-            <div className="features-grid flex lg:gap-[26px] gap-[10px] w-full justify-center flex-wrap">
+            <div className="features-grid flex lg:gap-[26px] gap-[10px] w-full justify-center flex-wrap" data-scroll-stagger="0.15" data-scroll-animate-type="slide-up-70" data-scroll-stagger-children=".feature-card">
                 {FEATURES.map((feature) => (
                     <div
                         key={feature.title}
                         className="feature-card flex relative flex-col lg:gap-4 gap-2.5 w-full max-w-[456px] lg:py-9 py-[26px] lg:px-7.5 px-5 bg-[#FDFDFD] border border-white lg:rounded-[36px] rounded-[26px]"
                     >
-                        <div className="feature-corner-icon absolute bottom-[12px] right-[30px]">
-                            <FeatureCornerIcon />
-                        </div>
+                        <FeatureCornerIcon className="absolute bottom-[12px] right-[30px]" />
                         <span className="font-medium lg:text-[28px] text-[16px] text-[#3F3F3F]">
                             {feature.title}
                         </span>

@@ -1,10 +1,8 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import axios from "axios";
-import gsap from "gsap";
 import WalletIcon from "../icons/WalletIcon";
 
 export default function WalletAnalyzerSection({ defaultAddress = "", onStatsLoaded }) {
-    const loadingBlockRef = useRef(null);
     const [address, setAddress] = useState(defaultAddress);
 
     useEffect(() => {
@@ -12,17 +10,6 @@ export default function WalletAnalyzerSection({ defaultAddress = "", onStatsLoad
     }, [defaultAddress]);
 
     const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if (loading && loadingBlockRef.current) {
-            gsap.from(loadingBlockRef.current, {
-                y: 16,
-                opacity: 0,
-                duration: 0.5,
-                ease: "power2.out",
-            });
-        }
-    }, [loading]);
     const [error, setError] = useState(null);
 
     const handleAnalyze = useCallback(
@@ -90,8 +77,7 @@ export default function WalletAnalyzerSection({ defaultAddress = "", onStatsLoad
             </form>
             {loading && (
                 <div
-                    ref={loadingBlockRef}
-                    className="flex w-full lg:p-[67px] p-[39px] justify-center relative bg-[#1A1A1A] border border-white rounded-[26px]"
+                    className="flex w-full lg:p-[67px] p-[39px] justify-center relative bg-[#1A1A1A] border border-white rounded-[26px] animate-[wallet-loading-in_0.5s_ease-out_forwards]"
                 >
                     <img
                         src="/assets/img/dashboard-loading-light.svg"

@@ -1,6 +1,4 @@
-import { useRef, useState, useEffect } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useState, useEffect } from "react";
 import { NAV_ITEMS } from "../data/navItems";
 import XIcon from "../icons/XIcon";
 import LaunchAppButton from "../../LaunchAppButton";
@@ -9,7 +7,6 @@ import LandingMobileMenu from "./LandingMobileMenu";
 const SCROLL_THRESHOLD = 80;
 
 export default function Header({ twitterUrl }) {
-    const headerRef = useRef(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -20,20 +17,10 @@ export default function Header({ twitterUrl }) {
         return () => window.removeEventListener("scroll", check);
     }, []);
 
-    useGSAP(() => {
-        gsap.from(headerRef.current, {
-            y: -60,
-            opacity: 0,
-            duration: 0.9,
-            ease: "power3.out",
-        });
-    }, { scope: headerRef });
-
     return (
         <>
-       
         <header
-            ref={headerRef}
+            data-mount-animate="header-drop"
             className={`fixed z-[100] top-0 left-0 right-0 z-50 1395:flex hidden w-full max-w-[1420px] mx-auto mt-[55px] mb-[30px] items-center transition-colors duration-300 ${
                 isScrolled ? "" : "bg-transparent"
             } ${isScrolled ? "justify-center" : "justify-between"}`}
