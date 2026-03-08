@@ -26,7 +26,7 @@ export default function Home() {
             <div className="h-[122px] 1395:block hidden" aria-hidden />
             <MainSection />
             <div className="flex flex-col w-full 1395:px-0 px-5 items-center">
-                <Suspense fallback={null}>
+                <Suspense fallback={<div className="min-h-screen" />}>
                     <UtilitySection />
                     <FeaturesSection />
                     <HowItWorksSection />
