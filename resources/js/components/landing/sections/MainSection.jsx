@@ -21,8 +21,11 @@ export default function MainSection() {
                 </LaunchAppButton>
             </div>
             <div className="flex z-50 absolute min-h-[120px] w-full max-w-[1180px] bottom-0 left-1/2 -translate-x-1/2 backdrop-blur-[2.5px]" />
-            <img src="/assets/img/main--section-img.png" className="hero-dashboard-img hero-mount-animate hero-mount-delay-3 1395:flex hidden z-40 rounded-[32px] w-full max-w-[1098px] absolute bottom-[-141px] left-1/2" />
-            <img src="/assets/img/main--section-bg.svg" className="hero-bg-img hero-mount-animate hero-mount-delay-4 flex w-full absolute bottom-0 left-1/2" />
+            <picture>
+                <source srcSet="/assets/img/main--section-img.webp" type="image/webp" />
+                <img src="/assets/img/main--section-img.png" loading="eager" decoding="async" className="hero-dashboard-img hero-mount-animate hero-mount-delay-3 1395:flex hidden z-40 rounded-[32px] w-full max-w-[1098px] absolute bottom-[-141px] left-1/2" />
+            </picture>
+            <img src="/assets/img/main--section-bg.svg" loading="lazy" decoding="async" className="hero-bg-img hero-mount-animate hero-mount-delay-4 flex w-full absolute bottom-0 left-1/2" />
         </section>
     );
 }

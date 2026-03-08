@@ -8,6 +8,8 @@ export default function useBinancePrice() {
     const reconnectRef = useRef(null);
 
     useEffect(() => {
+        let mounted = true;
+
         function connect() {
             if (wsRef.current?.readyState === WebSocket.OPEN) return;
 
@@ -15,12 +17,14 @@ export default function useBinancePrice() {
             wsRef.current = ws;
 
             ws.onmessage = (event) => {
+                if (!mounted) return;
                 const msg = JSON.parse(event.data);
                 const p = parseFloat(msg.c);
                 if (p) setPrice(p);
             };
 
             ws.onclose = () => {
+                if (!mounted) return;
                 reconnectRef.current = setTimeout(connect, 3000);
             };
 
@@ -30,6 +34,7 @@ export default function useBinancePrice() {
         connect();
 
         return () => {
+            mounted = false;
             clearTimeout(reconnectRef.current);
             wsRef.current?.close();
         };

@@ -12,8 +12,11 @@ export default function RealUseSection() {
                 subtitle="Built for everyday analysis, not hype cycles."
             />
             <div className="realuse-card flex relative w-full rounded-4xl lg:py-[100px] py-[60px] lg:px-[70px] px-[30px] lg:pb-[70px] pb-[40px] bg-[#1A1A1A] border-10 border-white" data-scroll-animate="slide-up-80">
-                <img src="/assets/img/real-use-section-light-left.svg" className="realuse-light-left absolute left-0 top-0" alt="" data-scroll-animate="slide-in-left-40" data-scroll-delay="200" />
-                <img src="/assets/img/real-use-section-light-right.png" className="realuse-light-right 1204:flex hidden absolute h-full right-0 bottom-0" alt="" data-scroll-animate="slide-in-right-40" data-scroll-delay="200" />
+                <img src="/assets/img/real-use-section-light-left.svg" loading="lazy" decoding="async" className="realuse-light-left absolute left-0 top-0" alt="" data-scroll-animate="slide-in-left-40" data-scroll-delay="200" />
+                <picture>
+                    <source srcSet="/assets/img/real-use-section-light-right.webp" type="image/webp" />
+                    <img src="/assets/img/real-use-section-light-right.png" loading="lazy" decoding="async" className="realuse-light-right 1204:flex hidden absolute h-full right-0 bottom-0" alt="" data-scroll-animate="slide-in-right-40" data-scroll-delay="200" />
+                </picture>
                 <div className="realuse-tooltip 1204:flex hidden absolute flex-col gap-[6px] max-w-[319px] top-[18px] right-[258px]" data-scroll-animate="tooltip-up" data-scroll-delay="150">
                     <div className="flex p-2.5 bg-linear-to-b from-[#080808] to-[#353535] rounded-[52px]">
                         <span className="text-[#DDDDDD] text-center text-[12px]">

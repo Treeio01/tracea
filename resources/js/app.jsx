@@ -11,6 +11,8 @@ import { initScrollAnimationsSystem, runMountAnimations } from './utils/scrollAn
 
 const PRIVY_APP_ID = "cmmaqdl0e021v0cl4uxkeeko5";
 
+const solanaConnectors = toSolanaWalletConnectors();
+
 const PRIVY_CONFIG = {
     appearance: {
         "accentColor": "#3ea0eb",
@@ -36,7 +38,7 @@ const PRIVY_CONFIG = {
     },
     mfa: { noPromptOnMfaRequired: false },
     externalWallets: {
-        solana: { connectors: toSolanaWalletConnectors() },
+        solana: { connectors: solanaConnectors },
     },
 };
 

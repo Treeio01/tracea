@@ -19,7 +19,6 @@ export default defineConfig({
                     vendor: ['react', 'react-dom'],
                     inertia: ['@inertiajs/react'],
                     privy: ['@privy-io/react-auth'],
-                    charts: ['apexcharts', 'react-apexcharts'],
                 },
             },
         },

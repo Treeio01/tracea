@@ -1,4 +1,4 @@
-import { useId, useEffect, useState } from "react";
+import { useId, useEffect, useState, memo } from "react";
 import axios from "axios";
 
 function formatPrice(price) {
@@ -23,7 +23,7 @@ function parseChartResponse(data) {
     return { price, change24h };
 }
 
-export default function MarketSnapshotSection() {
+export default memo(function MarketSnapshotSection() {
     const id = useId().replace(/:/g, "-");
     const [solData, setSolData] = useState({ price: null, change24h: null });
     const [usdcData, setUsdcData] = useState({ price: null, change24h: null });
@@ -252,4 +252,4 @@ export default function MarketSnapshotSection() {
             </div>
         </div>
     );
-}
+})

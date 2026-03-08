@@ -1,4 +1,6 @@
-export default function MetricCard({ title, description, value, icon: Icon }) {
+import { memo } from "react";
+
+export default memo(function MetricCard({ title, description, value, icon: Icon }) {
     return (
         <div className="flex flex-col w-full max-w-[351px] lg:gap-4.5 gap-4.5 lg:px-6 px-4.5 lg:py-5.5 py-2.5 bg-white border-2 border-[#F3F5F5] lg:rounded-[26px] rounded-[16px]">
             <div className="flex items-center justify-between w-full">
@@ -16,4 +18,4 @@ export default function MetricCard({ title, description, value, icon: Icon }) {
             </div>
         </div>
     );
-}
+})

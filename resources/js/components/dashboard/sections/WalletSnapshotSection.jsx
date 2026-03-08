@@ -1,3 +1,4 @@
+import { memo } from "react";
 import MetricCard from "../ui/MetricCard";
 import { WALLET_METRICS, formatStatValue } from "../data/metrics";
 import WalletIcon from "../icons/WalletIcon";
@@ -17,7 +18,7 @@ const ICON_MAP = {
     buysells: BuysSellsIcon,
 };
 
-export default function WalletSnapshotSection({ stats }) {
+export default memo(function WalletSnapshotSection({ stats }) {
     return (
         <div className="flex flex-col lg:gap-[24px] gap-[12px] bg-[#FDFDFD] border-8 lg:rounded-[36px] rounded-[22px] border-white w-full lg:px-[35px] px-[22px] lg:py-[30px] py-[22px]">
             <div className="flex lg:gap-[14px] gap-[6px] items-center">
@@ -44,4 +45,4 @@ export default function WalletSnapshotSection({ stats }) {
             </div>
         </div>
     );
-}
+})
